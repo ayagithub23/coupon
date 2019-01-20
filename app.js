@@ -28,13 +28,16 @@ $("button").click(function(){
         if(addInputText === coupon[i].code){
             console.log("進來檢查折扣碼");
             // TODO: 3) 加上折扣碼開始和到期日 卡住了
-            // moment('2010-10-20').isBefore('2010-12-31', 'day'); 
-            if(moment().isBefore(coupon.dayStart, "day")){
+            // moment('2019-01-20').isBefore('2018-12-05', 'day');
+            // moment('2019-01-20').isAfter('2019-02-28', 'day'); 
+            // 現在的日期晚於2018-12-31
+            if(moment().isAfter(coupon[i].dayEnd, "day")){
                 alert("折扣碼已到期");
-            } else if (moment().isAfter(coupon.dayEnd, "day")) {
+            // 現在的日期早於於2019-02-01
+            } else if (moment().isBefore(coupon[i].dayStart, "day")) {
                 alert("折扣碼尚未開始");
             }else{
-                $("select").append("<option>商品一</option>");
+                $("select").append("<option>商品4</option>");
             }
         };
     };
