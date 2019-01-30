@@ -63,11 +63,12 @@ $("button").click(function(){
             // moment('2019-01-20').isAfter('2019-02-28', 'day'); 
             // 現在的日期晚於2018-12-30
             if(moment().isAfter(coupon[i].dayEnd, "day")){
-                alert("折扣碼已到期");
+                error = "折扣碼已到期"
             // 現在的日期早於於2019-02-01
             } else if (moment().isBefore(coupon[i].dayStart, "day")) {
-                alert("折扣碼尚未開始");
+                error = "折扣碼尚未開始"
             }else{
+                error = "";                
                 $("option").remove();
                 for(var r = 0;r < coupon[i].products.length;r++){
                     // TODO: 4) ABCD如果正確的話，我要讓商品變成商品ABCD EFGH HIJK
@@ -75,14 +76,21 @@ $("button").click(function(){
                     // TODO: 5) 導入同時清空原本的商品123
                     $("#inputText").val("");
                 }
+
+                i = coupon.length; // 強制結束迴圈
             }
         }else{
             // TODO: 7) 輸入錯誤的折扣碼時以及INPUT="" 跳出ERROR
             error = "折扣碼錯誤";
-            $("body").append(`<p>${error}</p>`);
+            
             // ----- ▲ ▲ ▲ 重複執行三次，怎麼辦 ▲ ▲ ▲ ----- //
         };
     };
+
+    if(error){
+        $("body").append(`<p>${error}</p>`);
+    }
+
 
 });
 
