@@ -17,7 +17,11 @@ var coupon = [{
         skuid:"1",
         title:"淡水馬克杯",
         price:"400"
-    }]
+    },{
+        skuid:"11",
+        title:"淡水隨行杯",
+        price:"700"
+    },]
 },{
     code: "EFGH",
     dayStart:"2019-01-01",
@@ -26,6 +30,10 @@ var coupon = [{
         skuid:"2",
         title:"澎湖馬克杯",
         price:"400"
+    },{
+        skuid:"22",
+        title:"澎湖隨行杯",
+        price:"700"
     }]
 },{
     code: "HIJK",
@@ -62,7 +70,8 @@ $("button").click(function(){
             }else{
                 $("option").remove();
                 // TODO: 4) ABCD如果正確的話，我要讓商品變成商品ABCD EFGH HIJK
-                $("select").append(`<option>${coupon[i].products[0].title}</option>`);
+                $("select").append(`<option>${coupon[i].products[0].title}</option>
+                                    <option>${coupon[i].products[1].title}</option>`);
                 // TODO: 5) 導入同時清空原本的商品123
                 $("#inputText").val("");
             }
