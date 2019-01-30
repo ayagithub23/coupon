@@ -48,7 +48,7 @@ var coupon = [{
 ]
 // coupon[0].code
 
-
+var error;
 // TODO: 1) 可以檢查一組折扣碼，並append商品
 $("button").click(function(){
     var $inputText = $("#inputText");
@@ -78,8 +78,11 @@ $("button").click(function(){
             }
         }else{
             // TODO: 7) 輸入錯誤的折扣碼時以及INPUT="" 跳出ERROR
-            alert("輸入錯誤，請重新輸入");
+            error = "折扣碼錯誤";
+            $("body").append(`<p>${error}</p>`);
             // ----- ▲ ▲ ▲ 重複執行三次，怎麼辦 ▲ ▲ ▲ ----- //
         };
     };
+
 });
+
