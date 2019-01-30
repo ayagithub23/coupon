@@ -37,7 +37,7 @@ var coupon = [{
     }]
 },{
     code: "HIJK",
-    dayStart:"2019-02-01",
+    dayStart:"2018-02-01",
     dayEnd:"2019-02-28",
     products:[{
         skuid:"3",
@@ -69,11 +69,12 @@ $("button").click(function(){
                 alert("折扣碼尚未開始");
             }else{
                 $("option").remove();
-                // TODO: 4) ABCD如果正確的話，我要讓商品變成商品ABCD EFGH HIJK
-                $("select").append(`<option>${coupon[i].products[0].title}</option>
-                                    <option>${coupon[i].products[1].title}</option>`);
-                // TODO: 5) 導入同時清空原本的商品123
-                $("#inputText").val("");
+                for(var r = 0;r < coupon[i].products.length;r++){
+                    // TODO: 4) ABCD如果正確的話，我要讓商品變成商品ABCD EFGH HIJK
+                    $("select").append(`<option>${coupon[i].products[r].title}</option>`);
+                    // TODO: 5) 導入同時清空原本的商品123
+                    $("#inputText").val("");
+                }
             }
         }else{
             // TODO: 7) 輸入錯誤的折扣碼時以及INPUT="" 跳出ERROR
