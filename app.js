@@ -10,7 +10,7 @@
 // TODO: 7) 輸入錯誤的折扣碼時以及INPUT="" 跳出ERROR
 
 var coupon = [{
-    code: "ABCD",
+    code: "CODE1",
     dayStart:"2018-12-05",
     dayEnd:"2018-12-31",
     products:[{
@@ -23,7 +23,7 @@ var coupon = [{
         price:"700"
     },]
 },{
-    code: "EFGH",
+    code: "CODE2",
     dayStart:"2019-01-01",
     dayEnd:"2019-01-31",
     products:[{
@@ -36,8 +36,8 @@ var coupon = [{
         price:"700"
     }]
 },{
-    code: "HIJK",
-    dayStart:"2018-02-01",
+    code: "CODE3",
+    dayStart:"2019-02-01",
     dayEnd:"2019-02-28",
     products:[{
         skuid:"3",
@@ -63,10 +63,12 @@ $("button").click(function(){
             // moment('2019-01-20').isAfter('2019-02-28', 'day'); 
             // 現在的日期晚於2018-12-30
             if(moment().isAfter(coupon[i].dayEnd, "day")){
-                error = "折扣碼已到期"
+                error = "折扣碼已到期";
+                i = coupon.length; // 強制結束迴圈
             // 現在的日期早於於2019-02-01
             } else if (moment().isBefore(coupon[i].dayStart, "day")) {
-                error = "折扣碼尚未開始"
+                error = "折扣碼尚未開始";
+                i = coupon.length; // 強制結束迴圈
             }else{
                 error = "";                
                 $("option").remove();
@@ -77,6 +79,7 @@ $("button").click(function(){
                     $("#inputText").val("");
                 }
 
+                console.log("hi");
                 i = coupon.length; // 強制結束迴圈
             }
         }else{
